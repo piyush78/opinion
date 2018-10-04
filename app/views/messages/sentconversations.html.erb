@@ -1,0 +1,20 @@
+<table>
+  <tbody>
+    <% @messages.each do |message| %>
+      <% if message['seekeremail'] == session[:user] %>
+      <h2><%=message['message_title'] %></h2>
+        <h6>sent to &nbsp;&nbsp;&nbsp;&nbsp;<%= message['givername'] %>  </h6>
+        <div>
+          <div style="float:left">at <%  cat=message['timestamp'].to_i %><%= Time.at(cat).strftime("%B %-d, %Y %H:%M:%S") %></div>
+          <div style="float:right"><span class="glyphicon glyphicon-share-alt" aria-hidden="true"><%= link_to "Reply", messages_sentshow_path(:id => message['message_id']) %></span>&nbsp;&nbsp;
+            <span class="glyphicon glyphicon-edit" aria-hidden="true"><%= link_to "Edit", messages_edit_path(:id => message['message_id']) %></span> &nbsp;&nbsp;
+            <span class="glyphicon glyphicon-trash" aria-hidden="true"><%= link_to "Delete", messages_deletesent_path(:id => message['message_id']) %></span>
+          </div>
+        </div><br>
+        <br>
+        <%= message['message_description'] %>
+        <hr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

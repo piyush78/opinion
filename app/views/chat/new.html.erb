@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-header">
+      <h2><%= params[:email] %></h2>
+    </div>
+  </div>
+  <div class="chat">
+
+  </div>
+</div>
+
+  <div class="navbar-fixed-bottom">
+    <div class="container">
+    <%= form_tag chat_create_path do %>
+      <div class="form-group">
+        <%= hidden_field_tag(:receiver, params[:email]) %>
+        <%= text_field_tag(:message, "", autofocus: true, class:"form-control") %>
+      </div>
+      <div class="form-group">
+        <%= submit_tag("Submit" , class: "btn btn-primary") %>
+      </div>
+    <% end %>
+  </div>
+</div>

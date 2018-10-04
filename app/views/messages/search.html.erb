@@ -1,0 +1,30 @@
+<table class="table table-striped">
+<tbody>
+  <% if params[:search] == session[:user] %>
+  <tr>
+    <td> <%= @users['firstname'] %> </td>
+    <td> <%= @users['email'] %></td>
+  </tr>
+  <% else %>
+  <% if @users.blank? %>
+     <h4> <%= params[:search] %>.</h4> not found
+  <% else %>
+  <tr>
+    <td> <%= @users['firstname'] %> </td>
+    <td> <%= @users['email'] %></td>
+  <% connected_user = session[:connected_user]%>
+      <% if connected_user.include? (@users['email']) %>
+          <td> <%= p link_to "subscribed", messages_path(email: @users['email']), class: "btn btn-success btn-xlarge" %></td>
+          <% end %>
+      <% unless connected_user.include? (@users['email']) %>
+          <td> <%= link_to "subscribe", users_subscribe_path(email: @users['email']), class: "btn btn-danger btn-xlarge" %></td>
+      <% end %>
+    </tr>
+  <tr>
+    <td colspan="3"> </td>
+  </tr>
+  <% end %>
+  <% end %>
+
+</tbody>
+</table>

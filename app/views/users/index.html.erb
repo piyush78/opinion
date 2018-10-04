@@ -1,0 +1,44 @@
+
+<%= form_tag(messages_search_path, :method => "post", id: "search-form") do %>
+<%= text_field_tag :search, nil, placeholder: 'Enter email' %>
+<%= submit_tag "Search", :name => nil %>
+<% end %>
+
+
+<table class="table table-striped ">
+<tbody>
+
+<% if session[:connected_user] == nil %>
+<% @users.each do |user| %>
+  <% if user['email'] != session[:user] %>
+  <tr>
+    <td> <h4><%=user['firstname'] %> </h4></td>
+    <td><h4> <%= user['email'] %></h4></td>
+          <td> <%= link_to "Subscribe", users_subscribe_path(email: user['email']) , class: "btn btn-danger btn-xlarge"%></td>
+
+  </tr>
+
+  <% end %>
+<% end %>
+<% else %>
+<% @users.each do |user| %>
+  <% if user['email'] != session[:user] %>
+  <tr>
+    <td> <h4><%=user['firstname'] %> </h4></td>
+    <td> <h4><%= user['email'] %></h4></td>
+  <% connected_user = session[:connected_user]%>
+      <% if connected_user.include? (user['email']) %>
+          <td> <%=  link_to "Subscribed", messages_path(email: user['email']), class: "btn btn-success btn-xlarge" %></td>
+
+          <% end %>
+      <% unless connected_user.include? (user['email']) %>
+          <td> <%= link_to "Subscribe", users_subscribe_path(email: user['email']),class: "btn btn-danger btn-xlarge" %></td>
+          
+      <% end %>
+    </tr>
+
+  <% end %>
+<% end %>
+<% end %>
+</tbody>
+</table>

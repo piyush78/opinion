@@ -1,0 +1,12 @@
+<%= form_tag comments_update_path do %>
+<div class="form-group">
+<%= hidden_field_tag(:comment_id,@comment['comment_id'], rows: 10, class: "form-control") %>
+
+</div>
+  <div class="form-group">
+    <%= text_area_tag(:description, @comment['comment_description'], rows: 10, class: "form-control") %>
+  </div>
+  <div class="form-group">
+    <%= submit_tag("Update", class: "btn btn-primary") %>
+  </div>
+<% end %>

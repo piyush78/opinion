@@ -1,0 +1,17 @@
+
+<body>
+<table>
+  <tbody>
+    <% @messages.each do |message| %>
+      <% if message['giveremail'] == @user %>
+        <h2><%=message['message_title'] %></h2>
+        <h6><%= message['seekername'] %> </h6>
+        created at <%  cat=message['timestamp'].to_i %><%= Time.at(cat).strftime("%B %-d, %Y %H:%M:%S") %>
+        <div style="float:right;"><span class="glyphicon glyphicon-share-alt" aria-hidden="true"><%= link_to "Reply", messages_show_path(:id => message['message_id']) %></span>
+        </div><br/><br/>
+        <%= message['message_description'] %>
+        <hr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

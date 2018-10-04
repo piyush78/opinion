@@ -1,0 +1,4 @@
+<h2>Thanks, you paid <strong>$5.00</strong> to <%= params[:email] %></h2>
+<button style="btn btn-primary"> <%=link_to "start conversation",messages_path(:email => params[:email]) %></button> <br/>
+<br/>
+<%= link_to "back", users_path %>

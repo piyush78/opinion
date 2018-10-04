@@ -1,0 +1,16 @@
+<%= form_tag messages_update_path do %>
+<%= hidden_field_tag(:message_id, @message['message_id']) %>
+<div class="form-group">
+<%= label_tag("title") %>
+<%= text_field_tag(:title, @message['message_title'], class: "form-control")%>
+</div>
+<div class="form-group">
+<%= label_tag("description") %>
+<%= text_area_tag(:description, @message['message_description'], rows: 10, class: "form-control")%>
+</div>
+<div class="form-group">
+<%= submit_tag( "Update Opinion", class: "btn btn-primary")%>
+</div>
+
+
+<% end %>

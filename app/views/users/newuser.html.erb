@@ -1,0 +1,53 @@
+
+<div class ="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3" >
+      <h2 align="center">Sign up</h2>
+      <div class="signup">
+        <%= form_tag users_signup_path do %>
+          <div class="form-group">
+            <%= label_tag( "firstname" ) %><br />
+            <%= text_field_tag(:firstname, "",required: true, autofocus: true, class:"form-control") %>
+          </div>
+          <div class="form-group">
+            <%= label_tag( "lastname" ) %><br />
+            <%= text_field_tag(:lastname, "",required: true, class:"form-control") %>
+          </div>
+          <div class="form-group">
+            <%= label_tag( "email" )%><br />
+            <%= email_field_tag(:email, "",required: true, class:"form-control") %>
+          </div>
+          <div class="form-group">
+            <%= label_tag ( "password" ) %>
+            <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %><br />
+            <%= password_field_tag(:password, "",required: true, autocomplete: "off", class:"form-control") %>
+          </div>
+          <div class="form-group">
+            <%= label_tag( "password_confirmation" ) %><br />
+            <%= password_field_tag(:password_confirmation, "",required: true, autocomplete: "off", class:"form-control") %>
+          </div>
+          <div class="form-group">
+            <%= label_tag( "Intrested to give opinions" ) %> <br>
+            <%= select_tag(:usertypereg, options_for_select([ "Yes", "No" ], "Yes"),required: true, class:"form-control") %>
+          </div>
+          <div class="form-group">
+            <%= label_tag( "phone" ) %><br />
+            <%= text_field_tag(:phone, "",required: true, class:"form-control") %>
+          </div>
+          <div class="form-group">
+            <%= label_tag( "gender" ) %><br />
+            <%= select_tag(:gender, options_for_select([ "Male", "Female" ], "Male"),required: true, class:"form-control") %>
+          </div>
+          <br><br>
+          <div class="form-group">
+            <%= submit_tag("Create User" , class: "btn btn-primary") %>
+          </div>
+        <% end %>
+        <%= link_to "Signin", users_login_path %>
+      </div>
+
+    </div>
+  </div>
+</div>

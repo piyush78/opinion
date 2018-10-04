@@ -1,0 +1,12 @@
+<h2>Thanks, you paid to <%= params[:email] %><strong>$5.00</strong>!</h2>
+<%= form_tag messages_path do %>
+<div class="form-group">
+  <%= text_field_tag(:email, params[:email])  %>
+</div>
+<div class="form-group">
+  <%= submit_tag( "start conversation" , class: "btn btn-primary")  %>
+</div>
+<% end %>
+
+<br/>
+<%= link_to "back", users_path %>

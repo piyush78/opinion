@@ -1,0 +1,20 @@
+
+  <h1>Ask Opinion</h1>
+  <%= form_tag messages_create_path do %>
+    <div class="form-group">
+      <%= label_tag( "title") %><br />
+      <%= text_field_tag(:title, "" , autofocus: true, required: true, class: "form-control")  %>
+    </div>
+    <div class="form-group">
+      <%= hidden_field_tag(:email, @email)  %>
+    </div>
+    <div class="form-group">
+      <%= label_tag( "description") %><br />
+      <%= text_area_tag(:description, "" ,rows: 10, required: true, class: "form-control")  %>
+    </div>
+
+    <div class="form-group">
+      <%= submit_tag( "Ask Opinion" , class: "btn btn-primary")  %>
+    </div>
+
+  <% end %>
